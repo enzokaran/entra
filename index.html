@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionamento Interativo para Spotify</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6b0a0a, #191414);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        button {
+            background: #5c0808;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background: #17075e;
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1em;
+            animation: pulse 1s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Spotify Premium com seu principe!</h1>
+        <p>Clique no botão abaixo para ser redirecionado e curtir sua música com o amor da sua vida!</p>
+        <button onclick="redirecionar()">Ir escutar a musica com seu amor!</button>
+        <div class="loading" id="loading">Indo para o paraiso...</div>
+    </div>
+
+    <script>
+        function redirecionar() {
+            var loading = document.getElementById('loading');
+            loading.style.display = 'block';
+            setTimeout(function() {
+                var url = 'https://spotify.link/y2YSxTiTxYb';
+                try {
+                    window.location.href = url;
+                } catch (erro) {
+                    loading.style.display = 'none';
+                    alert('Erro ao redirecionar: ' + erro.message);
+                }
+            }, 1000); // Pequeno delay para efeito visual
+        }
+    </script>
+</body>
+</html>
